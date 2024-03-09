@@ -1,0 +1,11 @@
+http:
+  routers:
+    monitor-router:
+      rule: "Host(`monitor.com`)"
+      service: my-service
+
+  services:
+    monitor-service:
+      loadBalancer:
+        servers:
+          - url: "http://monitor-app-container:80"
