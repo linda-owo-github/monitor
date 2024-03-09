@@ -1,11 +1,11 @@
 http:
   routers:
-    monitor-router:
+    librenms-router:
       rule: "Host(`monitor.com`)"
-      service: my-service
+      service: librenms-service
 
   services:
-    monitor-service:
+    librenms-service:
       loadBalancer:
         servers:
-          - url: "http://monitor-app-container:80"
+          - url: "http://librenms-container:8081"

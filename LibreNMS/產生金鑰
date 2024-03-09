@@ -1,0 +1,1 @@
+docker run --rm jarischaefer/docker-librenms generate_key
