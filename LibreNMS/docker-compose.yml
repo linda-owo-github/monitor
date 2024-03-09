@@ -21,7 +21,7 @@ services:
       - ./librenms_data/mysql:/var/lib/mysql
     ports:
       - 8081:80 #80 port 被traefik佔住
-      - 514:514/tcp
+      - 514:514/tcp 
       - 514:514/udp
     depends_on:
       - mysql
