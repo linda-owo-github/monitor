@@ -12,23 +12,23 @@ services:
       - MYSQL_DATABASE=LibreNMS_DB
       - TZ=Asia/Taipei
     restart: always
-
+  
   librenms:
     image: jarischaefer/docker-librenms
-    container_name: librenms
+    container_name: librenms_2
     hostname: librenms
     volumes:
-      - ./librenms_data/mysql:/var/lib/mysql
+      - ./data:/data
     ports:
       - 8081:80 #80 port 被traefik佔住
-      - 514:514/tcp 
+      - 514:514/tcp
       - 514:514/udp
     depends_on:
       - mysql
     environment:
       APP_KEY: BaxvYlEofWi7glfTQ6cAfh5Ws137QGlYSujob56TF+I=
       DB_TYPE: mysql
-      DB_HOST: mysql
+      DB_HOST : mysql
       DB_NAME: LibreNMS_DB
       DB_USER: LibreNMS
       DB_PASS: p@ssw0rd
@@ -43,7 +43,7 @@ services:
       - "traefik.http.routers.librenms.rule=Host(`librenms.monitor.com`)"
       - "traefik.http.routers.librenms.entrypoints=web"
       - "traefik.http.services.librenms.loadbalancer.server.port=80"
-
+    restart: always
 networks:
   default:
     external:
