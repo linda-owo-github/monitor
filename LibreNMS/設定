@@ -1,0 +1,8 @@
+#產生金鑰
+docker run --rm jarischaefer/docker-librenms generate_key
+
+#初始化資料庫
+docker exec "目前起的服務名稱（或 ID）" setup_database
+
+#建立 admin 管理者
+sudo docker exec "目前起的服務名稱（或 ID）" create_admin

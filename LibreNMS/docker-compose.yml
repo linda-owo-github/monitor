@@ -5,14 +5,14 @@ services:
     image: mariadb
     container_name: librenms-db
     volumes:
-      - ./librenms_data/logs:/opt/librenms/logs
-      - ./librenms_data/rrd:/opt/librenms/rrd
+      - ./mysql:/var/lib/mysql
+      - ./50-server.cnf:/etc/mysql/mariadb.conf.d/50-server.cnf:ro
     environment:
       - MYSQL_ROOT_PASSWORD=p@ssw0rd
-      - MYSQL_DATABASE=LibreNMS_DB
+      - MYSQL_DATABASE=libreNMS
       - TZ=Asia/Taipei
     restart: always
-  
+
   librenms:
     image: jarischaefer/docker-librenms
     container_name: librenms_2
@@ -20,24 +20,24 @@ services:
     volumes:
       - ./data:/data
     ports:
-      - 8081:80 #80 port 被traefik佔住
+      - 8081:80
       - 514:514/tcp
       - 514:514/udp
     depends_on:
       - mysql
     environment:
-      APP_KEY: BaxvYlEofWi7glfTQ6cAfh5Ws137QGlYSujob56TF+I=
+      APP_KEY: base64:DVRiovLGAyZfuxj+Zw/3Mc89cJv4xc55/R98AbVHUKo=
       DB_TYPE: mysql
-      DB_HOST : mysql
-      DB_NAME: LibreNMS_DB
-      DB_USER: LibreNMS
+      DB_HOST: mysql
+      DB_NAME: libreNMS
+      DB_USER: root
       DB_PASS: p@ssw0rd
       TZ: Asia/Taipei
       POLLER: 24
       SERVICES_ENABLED: 1
       UPDATE_CHANNEL: master
       SYSLOG_ENABLED: 1
-      BASE_URL: http://librenms.monitor.com
+      BASE_URL: 192.168.139.137
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.librenms.rule=Host(`librenms.monitor.com`)"
@@ -46,5 +46,5 @@ services:
     restart: always
 networks:
   default:
-    external:
-      name: reverse-proxy
+    external: true
+    name: reverse-proxy
