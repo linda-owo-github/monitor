@@ -37,7 +37,7 @@ services:
       SERVICES_ENABLED: 1
       UPDATE_CHANNEL: master
       SYSLOG_ENABLED: 1
-      BASE_URL: 192.168.139.137
+      BASE_URL: http://192.168.139.137:8081
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.librenms.rule=Host(`librenms.monitor.com`)"
