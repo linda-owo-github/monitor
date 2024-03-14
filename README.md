@@ -1,5 +1,5 @@
 # monitor
-整合 Traefik、cAdvisor、LibreNMS、Grafana、Prometheus 和 Garylog 的 Docker 作品能夠實現以下效果與成效：
+整合 Traefik、Portainer、LibreNMS、Grafana、Prometheus 和 Garylog 的 Docker 作品能夠實現以下效果與成效：
 
 全面監控與性能優化：
 
