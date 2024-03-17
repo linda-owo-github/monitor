@@ -27,8 +27,14 @@ scrape_configs:
     - targets:
       - 192.168.139.137:9091
       labels:
-        group: 'pushgateway'
-
+        group: 'LibreNMS_1'
+ - job_name: 'prometheus'
+    scrape_interval: 10s
+    honor_labels: true
+    static_configs:
+    - targets:
+      - 192.168.139.137:9000
+      labels:
+        group: 'Portainer'
     # metrics_path defaults to '/metrics'
     # scheme defaults to 'http'.
-~                                                 
