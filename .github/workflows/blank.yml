@@ -1,4 +1,4 @@
-name: Docker Compose Build and Push
+name: Build and Push
 
 on:
   push:
@@ -8,20 +8,28 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+    env:
+      NODE_VERSION: '20'
 
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
-    # 如果你使用了 Docker Buildx，請設置它
+    # 可以在這裡添加其他步驟，比如安裝依賴、建置應用程序等
 
-    # 遍歷每個服務的資料夾
+    - name: Set up Node.js ${{ env.NODE_VERSION }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+
+    # 在這裡添加其他構建步驟，比如執行 npm install、編譯等
+
     - name: Build and Push Docker Images
       run: |
-        for service in $(ls -d */); do
-          service_name=$(basename $service)
+        for service_folder in */; do
+          service_name=$(basename $service_folder)
           echo "Building and pushing Docker image for service: $service_name"
-          cd $service_name
+          cd $service_folder
           docker-compose build
           docker-compose push
           cd ..
