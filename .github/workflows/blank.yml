@@ -22,8 +22,7 @@ jobs:
     - name: Build and Push Docker Image
       uses: docker/build-push-action@v2
       with:
-        context: .
-        file: ./path/to/your-Dockerfile  # 替換為你的 Dockerfile 的路徑
+        context: .  # 指定你的 Docker 上下文
         push: true
         tags: |
           your-docker-registry/your-repo-name:latest
