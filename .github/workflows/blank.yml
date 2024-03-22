@@ -29,5 +29,5 @@ jobs:
           your-docker-registry/your-repo-name:latest
           your-docker-registry/your-repo-name:${{ github.sha }}
         secrets:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          DOCKER_USERNAME: ${{DOCKERHUB_TOKEN}}
+          DOCKER_PASSWORD: ${{DOCKERHUB_USERNAME}}
