@@ -22,12 +22,11 @@ jobs:
     - name: Build and Push Docker Image
       uses: docker/build-push-action@v2
       with:
-        context: .
-        file: ./path/to/Dockerfile  # 替換為你的 Dockerfile 的路徑
+        context: .  # 指定你的 Docker 上下文
         push: true
         tags: |
           your-docker-registry/your-repo-name:latest
           your-docker-registry/your-repo-name:${{ github.sha }}
         secrets:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}

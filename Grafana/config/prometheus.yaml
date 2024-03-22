@@ -20,15 +20,21 @@ rule_files:
 # Here it's Prometheus itself.
 scrape_configs:
   # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
-  - job_name: 'test'
+  - job_name: 'LibreNMS'
     scrape_interval: 10s
     honor_labels: true
     static_configs:
     - targets:
       - 192.168.139.137:9091
       labels:
-        group: 'pushgateway'
-
+        group: 'LibreNMS_1'
+  - job_name: 'metrics'
+    scrape_interval: 10s
+    metrics_path: 'metrics'
+    static_configs:
+    - targets:
+      - 192.168.139.137:8090
+      labels:
+        group: 'cadvisor'
     # metrics_path defaults to '/metrics'
     # scheme defaults to 'http'.
-~                                                 
