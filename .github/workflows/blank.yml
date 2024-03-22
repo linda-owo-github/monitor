@@ -1,9 +1,9 @@
-name: Docker Build and Push
+name: Docker Compose Build and Push
 
 on:
   push:
     branches:
-      - main  # 替換為你的主分支名稱
+      - main
 
 jobs:
   build-and-push:
@@ -13,21 +13,19 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
-    - name: Set up QEMU
-      uses: docker/setup-qemu-action@v2
+    # 如果你使用了 Docker Buildx，請設置它
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
-
-    - name: Build and Push Docker Image
-      uses: docker/build-push-action@v2
-      with:
-        context: .
-        file: ./path/to/Dockerfile  # 替換為你的 Dockerfile 的路徑
-        push: true
-        tags: |
-          your-docker-registry/your-repo-name:latest
-          your-docker-registry/your-repo-name:${{ github.sha }}
-        secrets:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+    # 遍歷每個服務的資料夾
+    - name: Build and Push Docker Images
+      run: |
+        for service in $(ls -d */); do
+          service_name=$(basename $service)
+          echo "Building and pushing Docker image for service: $service_name"
+          cd $service_name
+          docker-compose build
+          docker-compose push
+          cd ..
+        done
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
