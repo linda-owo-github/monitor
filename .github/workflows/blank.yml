@@ -23,8 +23,8 @@ jobs:
     - name: Check if Docker Hub repository exists
       run: |
         echo "Checking if Docker Hub repository exists..."
-        curl -s -o /dev/null -w "%{http_code}" https://hub.docker.com/v2/repositories/linda1110929/monitor
-      continue-on-error: true # 忽略失败，以允许后续步骤继续执行
+        curl -s -o /dev/null -w "%{http_code}" https://hub.docker.com/v2/repositories/monitor
+      continue-on-error: true 
 
     - name: Build and Push Docker Images
       run: |
