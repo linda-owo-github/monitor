@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NODE_VERSION: '20'
+      CHECK_REPO_URL: https://hub.docker.com/v2/repositories/monitor
+      DOCKER_CONFIG: ${{ secrets.DOCKERHUB_CONFIG }}
 
     steps:
     - name: Checkout Repository
@@ -21,9 +23,12 @@ jobs:
         node-version: ${{ env.NODE_VERSION }}
 
     - name: Check if Docker Hub repository exists
+      id: check_repo
       run: |
-        echo "Checking if Docker Hub repository exists..."
-        curl -s -o /dev/null -w "%{http_code}" https://hub.docker.com/v2/repositories/monitor
+        status_code=$(curl -s -o /dev/null -w "%{http_code}" ${{ env.CHECK_REPO_URL }})
+        if [[ "$status_code" -ne 404 ]]; then
+          echo "REPO_EXISTS=true" >> $GITHUB_ENV
+        fi
       continue-on-error: true 
 
     - name: Build and Push Docker Images
@@ -31,11 +36,3 @@ jobs:
         for service_folder in */; do
           service_name=$(basename $service_folder)
           echo "Building and pushing Docker image for service: $service_name"
-          cd $service_folder
-          docker-compose build
-          docker-compose push
-          cd ..
-        done
-      env:
-        DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
