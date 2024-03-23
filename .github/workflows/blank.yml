@@ -36,6 +36,6 @@ jobs:
           echo "Building and pushing Docker image for service: $service_name"
           cd $service_folder
           docker-compose build
-          docker-compose push ${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_REPOSITORY }}:${{ github.sha }}
+          docker-compose push ${{ env.DOCKERHUB_USERNAME }}/${{ env.DOCKER_REPOSITORY }}:${{ github.sha }}
           cd ..
         done
