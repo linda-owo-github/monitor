@@ -36,10 +36,7 @@ jobs:
           service_name=$(basename $service_folder)
           echo "Building and pushing Docker image for service: $service_name"
           cd $service_folder
-          docker build -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} .
-          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          docker-compose build
+          docker-compose push
           cd ..
         done
-      env:
-        DOCKER_USERNAME: ${{ github.actor }}
-        DOCKER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
