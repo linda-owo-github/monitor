@@ -35,8 +35,8 @@ jobs:
           echo "Building and pushing Docker image for service: $service_name"
           cd $service_folder
           if [ -f docker-compose.yml ]; then
-            docker-compose build $service_name
-            docker-compose push $service_name
+            docker-compose build
+            docker-compose push
           else
             echo "docker-compose.yml not found in $service_folder"
           fi
