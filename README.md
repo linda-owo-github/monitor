@@ -10,22 +10,11 @@
 
 以下是使用 LibreNMS、Prometheus、Pushgateway 和 Grafana 的流程图：
 
-+------------------+                +-------------------+                +-------------------+
-|                  |                |                   |                |                   |
-|    LibreNMS      |  SNMP          |   Prometheus      |  Push metrics  |   Pushgateway     |
-|                  +---------------->                   +--------------->                   |
-|                  |                |                   |                |                   |
-+------------------+                +-------------------+                +-------------------+
-                                        |
-                                        | Query Prometheus metrics
-                                        |
-                                        |
-                                        v
-+------------------+                +-------------------+
-|                  |                |                   |
-|     Grafana      +<---------------+    Web browser    |
-|                  |    Dashboard   |                   |
-+------------------+                +-------------------+
+
+![image](https://github.com/linda-owo-github/monitor/assets/66786888/4bf09629-4d26-4772-9782-043ca3c02936)
+
+
+
 1. LibreNMS 使用 SNMP 監控網路設備，並將收集到的指標推送到 Prometheus。
 2. Prometheus 接收到指標後存儲並進行相應的指標分析。
 3. Pushgateway 接收到 Prometheus 收集的指標，然後將其推送給 Grafana。
