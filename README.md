@@ -5,13 +5,13 @@
   為了解決這個問題，我主動規劃並使用 Docker 架設了一套服務，包括 Traefik、cAdvisor、LibreNMS、Grafana、Prometheus、 Portainer、 Garylog，借助這些服務，我們可以即時監控網路設備的狀況，提前發現並解決潛在問題，有效地改善了系統的穩定性和可靠性，透過主動識別和解決潛在問題，降低了損失和系統異常
 
 ## 選擇服務
-Traefik：Traefik作為反向代理和負載均衡器，可以自動路由流量到正確的 Docker 容器，並根據需要動態調整負載
-Portainer：管理 Docker 容器、映像和容器網路的直觀界面，透過 Portainer，可以輕鬆地監視和操作容器
-LibreNMS：監控網路設備和服務器，提供關於系統狀態和性能
-Garylog：收集、分析和警報日誌數據，可以幫助您監視應用程序和系統的運行狀態，以及識別任何問題或異常
-Prometheus： 收集時間序列數據
-Grafana： 則提供了靈活的圖表和面板，使您可以視覺化和分析監控數據
-cAdvisor：監控Docker容器的性能和資源使用情況
+* Traefik：Traefik作為反向代理和負載均衡器，可以自動路由流量到正確的 Docker 容器，並根據需要動態調整負載
+* Portainer：管理 Docker 容器、映像和容器網路的直觀界面，透過 Portainer，可以輕鬆地監視和操作容器
+* LibreNMS：監控網路設備和服務器，提供關於系統狀態和性能
+* Garylog：收集、分析和警報日誌數據，可以幫助您監視應用程序和系統的運行狀態，以及識別任何問題或異常
+* Prometheus： 收集時間序列數據
+* Grafana： 則提供了靈活的圖表和面板，使您可以視覺化和分析監控數據
+* cAdvisor：監控Docker容器的性能和資源使用情況
 
 
 ## 整合與效能評估
