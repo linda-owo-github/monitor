@@ -11,7 +11,8 @@
 以下是使用 LibreNMS、Prometheus、Pushgateway 和 Grafana 的流程图：
 
 
-![image](https://github.com/linda-owo-github/monitor/assets/66786888/4bf09629-4d26-4772-9782-043ca3c02936)
+
+![Untitled diagram-2024-03-28-132704](https://github.com/linda-owo-github/monitor/assets/66786888/7923608a-4b5d-422a-a012-b1f325786c02)
 
 
 
