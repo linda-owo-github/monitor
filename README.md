@@ -27,17 +27,25 @@
 
 ![Untitled diagram-2024-03-28-132704](https://github.com/linda-owo-github/monitor/assets/66786888/0723bd8a-6884-4e81-ba6c-8767f5d0beeb)
 
+
+
 1. LibreNMS & Prometheus：LibreNMS 透過 Prometheus Exporter 將監控數據傳送到 Prometheus 中進行處理，同時使用 Pushgateway 進行監控數據的推送。 Alertmanager 負責處理和發送報警信息
-
 2. Docker Container Monitoring：Docker Container 透過 cAdvisor 將數據傳送到 Prometheus 中進行監控和分析
-
 3. Grafana & Traefik： ： Grafana 主要用於監控數據的可視化展示，而 Traefik 則用於服務的反向代理和路由
-
 4. Portainer & Docker UI： Portainer 與 Docker 相連，主要用於容器的管理和操作
 
 ## 整合服務
 ![image](https://github.com/linda-owo-github/monitor/assets/66786888/c1ab3343-db67-4fe2-8251-f7e7ae59074f)
 
+## 效能評估
+![image](https://github.com/linda-owo-github/monitor/assets/66786888/acf0ef95-ef8f-46c9-9282-08318f4c24cd)
+
+
+
+* Portainer 容器管理平台：  UI 介面，用於管理和操作 Docker 容器，提供了方便快捷的容器部署、監控和管理功能
+* Grafana 圖表面板：主要使用於 Docker 容器和 LibreNMS 網絡監控所收集到的數據，透過 Grafana可以創建各種動態圖表和面板，以直觀方式呈現監控數據，快速了解系統狀態和性能
+* Garylog 日誌監控和管理：追蹤系統活動、識別問題並進行故障排除
+* LibreNMS 網絡監控： 即時檢測網絡故障和問題，並透過警報功能及時通知用戶，提高系統的可用性和可靠性
 
 ## 結論
 
