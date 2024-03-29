@@ -1,11 +1,17 @@
 # 自架設監控服務
 
 ## 背景與目的
+![image](https://github.com/linda-owo-github/monitor/assets/66786888/f56cef1c-940f-47e8-84b7-49fa3a53d5b6)
+
   公司原有大量的網路管理設備，然而這些設備尚未進行整合管理，導致我們需要花費大量的時間和精力來分別監控每個服務的狀況，由於無法透過手機即時了解服務的運行狀態，許多問題往往只能在到達公司後才能發現，從而導致了數據損失和系統異常
   
   為了解決這個問題，我主動規劃並使用 Docker 架設了一套服務，包括 Traefik、cAdvisor、LibreNMS、Grafana、Prometheus、 Portainer、 Garylog，借助這些服務，我們可以即時監控網路設備的狀況，提前發現並解決潛在問題，有效地改善了系統的穩定性和可靠性，透過主動識別和解決潛在問題，降低了損失和系統異常
 
 ## 選擇服務
+
+![image](https://github.com/linda-owo-github/monitor/assets/66786888/6e99db20-6f6d-4505-b3a4-95cace93f55b)
+
+
 * Traefik：Traefik作為反向代理和負載均衡器，可以自動路由流量到正確的 Docker 容器，並根據需要動態調整負載
 * Portainer：管理 Docker 容器、映像和容器網路的直觀界面，透過 Portainer，可以輕鬆地監視和操作容器
 * LibreNMS：監控網路設備和服務器，提供關於系統狀態和性能
@@ -20,7 +26,7 @@
 
 以下是監控服務流程圖：
 
-![Untitled diagram-2024-03-28-132704](https://github.com/linda-owo-github/monitor/assets/66786888/7923608a-4b5d-422a-a012-b1f325786c02)
+![Untitled diagram-2024-03-28-132704](https://github.com/linda-owo-github/monitor/assets/66786888/0723bd8a-6884-4e81-ba6c-8767f5d0beeb)
 
 1. LibreNMS & Prometheus：LibreNMS 透過 Prometheus Exporter 將監控數據傳送到 Prometheus 中進行處理，同時使用 Pushgateway 進行監控數據的推送。 Alertmanager 負責處理和發送報警信息
 
@@ -31,20 +37,20 @@
 4. Portainer & Docker UI： Portainer 與 Docker 相連，主要用於容器的管理和操作
 
 ## 整合服務
-![image](https://github.com/linda-owo-github/monitor/assets/66786888/3cb05887-b0f6-4a36-a728-30f1e19cc1bd)
-
-
-
+![image](https://github.com/linda-owo-github/monitor/assets/66786888/c1ab3343-db67-4fe2-8251-f7e7ae59074f)
 
 
 ## 結論
 
-* 監控系統的重要性：實時追蹤系統的狀態，及早識別並解決潛在問題，從而提高系統的可靠性和穩定性
-* 性能優化：發現了一些性能方面的問題，導致系統效能不佳
-* 數據整合和視覺化：整合不同工具的數據和視覺化呈現是一個挑戰，特別是在將監控數據集成到單一平台中
-* 安全和隱私保護：確保監控數據的收集、存儲和使用符合相關法規和標準，並采取必要的措施保護數據的安全性和隱私性
+![image](https://github.com/linda-owo-github/monitor/assets/66786888/b8db03e1-1e6d-4ab5-944d-61d49dd20e84)
 
 
+* 監控系統的重要性：實時追蹤系統的狀態，及早識別並解決潛在問題，提高了系統的可靠性和穩定性
+* 性能優化：發現了性能方面的問題，這些問題導致系統效能不佳，可以透過監控和分析數據，能夠采取適當的措施來優化系統性能，提高系統的效率和性能
+* 數據整合和視覺化：整合不同工具的數據並將其視覺化呈現，需要將來自不同來源的數據整合到單一平台中，並以清晰直觀的方式呈現，以便能夠輕松理解和分析數據
+* 安全和隱私保護：在監控數據的收集、存儲和使用方面，需要確保符合相關的法規和標準，並采取必要的措施保護數據的安全性和隱私性
+
+通過整合和優化監控系統，我們不僅提高了系統的穩定性和可靠性，還為用戶提供了更好的使用體驗
 
 
 
