@@ -38,7 +38,8 @@
 ![image](https://github.com/linda-owo-github/monitor/assets/66786888/c1ab3343-db67-4fe2-8251-f7e7ae59074f)
 
 ## 效能評估
-![image](https://github.com/linda-owo-github/monitor/assets/66786888/acf0ef95-ef8f-46c9-9282-08318f4c24cd)
+![image](https://github.com/user-attachments/assets/fdc4fd38-f7e6-48fb-baeb-802fa3d725b4)
+
 
 
 
