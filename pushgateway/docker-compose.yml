@@ -3,7 +3,16 @@ services:
   pushgateway:
     image: prom/pushgateway
     volumes:
-    - ./config/prometheus.yaml:/etc/prometheus/prometheus.yaml
     - ./prometheus_data:/prometheus
     ports:
       - "9091:9091"
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.pushgateway.rule=Host(`pushgateway.monitor.com`)"
+      - "traefik.http.routers.pushgateway.entrypoints=web"
+      - "traefik.http.services.pushgateway.loadbalancer.server.port=80"
+networks:
+  default:
+    external: true
+    name: reverse-proxy
